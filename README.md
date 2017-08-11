@@ -5,4 +5,5 @@ The purpose of the project is to make proposed legislation more known and access
 
 
 Project Timeline
-<img width="833" alt="screen shot 2017-08-11 at 9 10 59 am" src="https://user-images.githubusercontent.com/13442896/29214775-8a39ce94-7e76-11e7-9810-c89044516964.png">
+
+<img width="575" alt="screen shot 2017-08-11 at 9 23 31 am" src="https://user-images.githubusercontent.com/13442896/29214957-21d5719a-7e77-11e7-9994-88d2cd320c44.png">
