@@ -5,3 +5,4 @@ The purpose of the project is to make proposed legislation more known and access
 
 
 Project Timeline
+[BPV_taskTimeline.pdf](https://github.com/Homerade/Bmore-public-vote/files/1217946/BPV_taskTimeline.pdf)
