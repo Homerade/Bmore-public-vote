@@ -1,13 +1,16 @@
 # first go
 
 > a preliminary ordinance page
+
 > next steps: build out further and explore ajax via axios
 
 ## Get up and running
 https://vuejs.org/v2/guide/installation.html
 
 install --global vue-cli
+
 (have npm installed in the project folder)
+
 npm run dev
 
 
