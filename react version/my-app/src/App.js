@@ -15,14 +15,16 @@ import './App.css';
 // }
 
 function App(props) {
-  const setup = props.ordinances.map((ordinance) =>
+  const setup = props.ordinances.map((ordinance) => 
+    (
     <div key={post.ReferenceNo}>
       <h2>{post.Name}</h2>
       <p>{post.Description}</p>
     </div>  
+    )
   );  
     return ( 
-      <div>{setup}</div>
+      <div><h1>Hi</h1>{setup}</div>
     );
 }
 
@@ -33,9 +35,4 @@ const ordinances = [
 ];
 
 
-ReactDOM.render(
-  <App ordinances={ordinances} />, 
-  document.getElementById('root')
-);
-
-// export default App;
+export default App;
