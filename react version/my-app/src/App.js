@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './App.css';
 
 // class App extends React.Component {
@@ -17,9 +16,9 @@ import './App.css';
 function App(props) {
   const setup = props.ordinances.map((ordinance) => 
     (
-    <div key={post.ReferenceNo}>
-      <h2>{post.Name}</h2>
-      <p>{post.Description}</p>
+    <div key={ordinance.ReferenceNo}>
+      <h2>{ordinance.Name}</h2>
+      <p>{ordinance.Description}</p>
     </div>  
     )
   );  
@@ -27,12 +26,5 @@ function App(props) {
       <div><h1>Hi</h1>{setup}</div>
     );
 }
-
-
-const ordinances = [
-  {ReferenceNo: 1, Name: 'Ordinance 1', Description: 'stuff'},
-  {ReferenceNo: 2, Name: 'Ordinance 2', Description: 'more stuff'}
-];
-
 
 export default App;
