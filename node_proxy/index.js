@@ -1,28 +1,37 @@
 	
-var express = require('express')
-var app = express()
-var bodyParser = require('body-parser')
-var axios = require('axios')
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
+const axios = require('axios')
+const _ = require('lodash')
+
 
 const ordinances = [
 	{ referenceNumber: 1, name: 'Ordinance 1', description: 'stuff' },
 	{ referenceNumber: 2, name: 'Ordinance 2', description: 'more stuff' }
 ];
 
-axios.get('http://webapi.legistar.com/v1/Seattle/Matters')
-	.then(function(response) {
-		console.log(response);
+app.get('/ordinances', function(req, res) {
+  axios.get('http://webapi.legistar.com/v1/Seattle/Matters')
+	.then(response => {
+		res.send(response.data.map((item) => ({ id: item.MatterId, name: item.MatterName })))
 	})
-
 	.catch(function (error) {
 		console.log(error);
-	})
-
-// app.get('/', (req, res) => {
-//   res.send(ordinances)
-// })
-
-// listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
-  console.log('Your app is listening on port ' + listener.address().port);
+	});
 });
+
+app.listen(4444, function() {
+	console.log('your app is listening on port 4444')
+})
+
+
+// const results = [response]
+
+// const mapped = results.map((item) => _.pick(item, ['MatterId', 'MatterName']))
+
+// res.send(mapped)
+
+
+
+// JSON.stringify(response.data, null, 2)
