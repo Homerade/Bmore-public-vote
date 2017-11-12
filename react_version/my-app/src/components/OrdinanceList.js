@@ -1,18 +1,29 @@
 import React from 'react';
 import Ordinance from './Ordinance';
+import axios from 'axios';
 
-const ordinances = [
-  { referenceNumber: 1, name: 'Ordinance 1', description: 'stuff' },
-  { referenceNumber: 2, name: 'Ordinance 2', description: 'more stuff' }
-];
+export default class OrdinanceList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ordinances: []
+    };
+  }
 
-export default function OrdinanceList() {
-  return (
-    <div>
-      <h1>Ordinance List</h1>
-      <ul>
-        {ordinances.map((o) => <Ordinance ordinance={o} key={o.referenceNumber} />)}
-      </ul>
-    </div>
-  )
+  componentDidMount() {
+    axios.get('http://localhost:4444/ordinances').then((response) => {
+      this.setState({ ordinances: response.data });
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Ordinance List</h1>
+        <ul>
+          {this.state.ordinances.map((o) => <Ordinance ordinance={o} key={o.id} />)}
+        </ul>
+      </div>
+    );
+  }
 }
