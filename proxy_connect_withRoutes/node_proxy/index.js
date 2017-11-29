@@ -31,6 +31,24 @@ app.get('/ordinances', function(req, res) {
 		});
 });
 
+app.get('/individualordinance', function(req, res) {
+  axios.get('http://webapi.legistar.com/v1/Seattle/Matters/{MatterId}')
+		.then(response => {
+			res.send(response.data.map((item) => ({
+				id: item.MatterId,
+				file: item.MatterFile,
+				description: item.MatterTitle,
+				status: item.MatterStatusName,
+				type: item.MatterTypeName,
+				dateIntroduced: new Date(item.MatterIntroDate),
+				dateLastModified: formatLastModified(item.MatterLastModifiedUtc)
+			})));
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+});
+
 app.listen(4444, function() {
 	console.log('your app is listening on port 4444')
 });
