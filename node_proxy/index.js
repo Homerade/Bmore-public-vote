@@ -31,13 +31,13 @@ app.get('/ordinances', function(req, res) {
 		});
 });
 
-app.get('/individualord/:id', function(req, res) {
+app.get('/ordinance/:id', function(req, res) {
   axios.get('http://webapi.legistar.com/v1/Seattle/Matters/' + req.params.id)
 		.then(response => {
-			console.log(response.data);
+			res.send(response.data);
 		})
 		.catch(function (error) {
-			console.log(error);
+			res.status(400).send({ error });
 		});
 	});		
 
