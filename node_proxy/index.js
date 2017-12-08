@@ -5,15 +5,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
 const _ = require('lodash');
-// var mongoose = require('mongoose');
-
-
-// // MongoDB
-// var credentials = require('./credentials.js');
-// mongoose.connect(credentials.mongo);
-
-// // models
-// var User = require('./models/voteInfo.js');
 
 
 app.use(cors());
@@ -41,28 +32,6 @@ app.get('/ordinances', function(req, res) {
 		});
 });
 
-// app.get('/ordinance/:id', function(req, res) {
-//   axios.get('http://webapi.legistar.com/v1/Seattle/Matters/' + req.params.id)
-// 		.then(response => {
-// 			res.send(response.data.map((key) => ({  
-// 				id: item.MatterId,
-// 				file: item.MatterFile,
-// 				description: item.MatterTitle,
-// 				status: item.MatterStatusName,
-// 				type: item.MatterTypeName,
-// 				dateIntroduced: new Date(item.MatterIntroDate),
-// 				dateLastModified: formatLastModified(item.MatterLastModifiedUtc)
-// 			})));
-// 		})2
-// 		.catch(function (error) {
-// 			res.status(400).send({ error });
-// 		});
-// 	});	
-
-// Object.entires(response.data)
-// Object.keys
-// response is not an array so item won't work
-// change item.__ ?
 
 app.get('/ordinance/:id', function(req, res) {
   axios.get('http://webapi.legistar.com/v1/Seattle/Matters/' + req.params.id)
@@ -77,3 +46,5 @@ app.get('/ordinance/:id', function(req, res) {
 app.listen(4444, function() {
 	console.log('your app is listening on port 4444')
 });
+
+
