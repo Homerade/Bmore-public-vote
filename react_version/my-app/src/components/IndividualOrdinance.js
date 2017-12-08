@@ -1,66 +1,60 @@
-// import React from 'react';
-// import { Link } from 'react-router-dom'
-
-// export default function IndividualOrdinance(props) {
-// 	// console.log(props.location);
-// 	// const { ordinance } = props.match.params;
-//   return (
-//     <li> 
-// 		<h2>{props.ordinance.file} <small>- {props.ordinance.type}</small></h2>
-// 		<p>Status: {props.ordinance.status}</p>
-// 		<p>Introduced: {props.ordinance.dateIntroduced}</p>
-// 		<p>Last Modified: {props.ordinance.dateLastModified}</p>
-// 		<p>{props.ordinance.description}</p>
-//     </li>  
-//   );
-// }
-
-// this.props.match.params.id
-// this.props.location
-// this.props.match.id
-
-
 import React from 'react';
 import axios from 'axios';
+import ReactVote from 'react-vote';
+
+import OrdVote from './OrdVote';
+
 
 export default class IndividualOrdinance extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      individualord: {}
+      individualord: []
     };
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4444/ordinance/' + this.props.match.id)
+    axios.get('http://localhost:4444/ordinance/' + this.props.match.params.id)
     .then((response) => {
-      console.log("then response");
       this.setState({ individualord: response.data });
     })
     .catch(function (error) {
-      console.log("catch error");
+      console.log(error);
     });
   }
 
 
   render() {
     return (
-      <code><pre>{JSON.stringify(this.state.individualord, null, 2)}</pre></code>
+       <div>
+
+       <div>
+        <h2>{this.state.individualord.MatterFile} <small>- {this.state.individualord.MatterTypeName}</small></h2>
+        <p>Status: {this.state.individualord.MatterStatusName}</p>
+        <p>Introduced: {this.state.individualord.MatterIntroDate}</p>
+        <p>Last Modified: {this.state.individualord.MatterLastModifiedUtc}</p>
+        <p>{this.state.individualord.MatterTitle}</p>
+      </div>
+
+      <OrdVote title={this.state.individualord.MatterFile} />
+
+      </div>
    );
   }
-
-// <h1>Hi!</h1>
-
-  //  render() {
-  //   const { individualord } = this.state.individualord
-  //   return (
-  //     <div>
-  //       <h2>{this.state.individualord.MatterFile} <small>- {this.state.individualord.type}</small></h2>
-  //       <p>Status: {this.state.individualord.status}</p>
-  //       <p>Introduced: {this.state.individualord.dateIntroduced}</p>
-  //       <p>Last Modified: {this.state.individualord.dateLastModified}</p>
-  //       <p>{this.state.individualord.description}</p>
-  //     </div>
-  //   );
-  // }
 }
+
+
+
+// i think the next thing you'll want to do is go back to the proxy API and convert/pick keys for the single endpoint
+
+// then you'll be ready to build a real template in react with your shiny new ordinance data
+
+// later you should store the `error` on `this.state` somehow and then check for that error's existence in `render()`, and if it exists, display some kind of error message/banner instead of trying to display the ordinance
+
+
+
+//// NEXT BIG THINGS
+
+// weed out everything but ORDs
+// style
+// add voting system
