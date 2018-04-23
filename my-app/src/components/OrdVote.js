@@ -6,15 +6,14 @@ export default class OrdVote extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			voted: false,
-			buttonActive: ''
+			voted: false
 		};
 		this.submitVote = this.submitVote.bind(this);
 	}
 
 
 	handleClick(value) {
-		this.setState({ voteValue: value }, () => console.log(`I hit the ${this.state.voteValue} button`));
+		this.setState({ voteValue: value });
 	}
 
 	submitVote() {
